@@ -2,35 +2,35 @@ require File.dirname(__FILE__) + '/../lib/sql-parser'
 require 'test/unit'
 
 class TestStatement < Test::Unit::TestCase
-  # def test_direct_select
-  #   assert_sql 'SELECT * FROM `users` ORDER BY `name`', SQLParser::Statement::DirectSelect.new(select(all, tblx(from(tbl('users')))), SQLParser::Statement::OrderBy.new(col('name')))
-  # end
+  def test_direct_select
+    assert_sql 'SELECT * FROM "users" ORDER BY "name"', SQLParser::Statement::DirectSelect.new(select(all, tblx(from(tbl('users')))), SQLParser::Statement::OrderBy.new(col('name')))
+  end
 
-  # def test_order_by
-  #   assert_sql 'ORDER BY `name`', SQLParser::Statement::OrderBy.new(col('name'))
-  # end
+  def test_order_by
+    assert_sql 'ORDER BY "name"', SQLParser::Statement::OrderBy.new(col('name'))
+  end
 
-  # def test_subquery
-  #   assert_sql '(SELECT 1)', SQLParser::Statement::Subquery.new(select(int(1)))
-  # end
+  def test_subquery
+    assert_sql '(SELECT 1)', SQLParser::Statement::Subquery.new(select(int(1)))
+  end
 
-  # def test_select
-  #   assert_sql 'SELECT 1', select(int(1))
-  #   assert_sql 'SELECT * FROM `users`', select(all, tblx(from(tbl('users'))))
-  # end
+  def test_select
+    assert_sql 'SELECT 1', select(int(1))
+    assert_sql 'SELECT * FROM "users"', select(all, tblx(from(tbl('users'))))
+  end
 
-  # def test_select_list
-  #   assert_sql '`id`', slist(col('id'))
-  #   assert_sql '`id`, `name`', slist([col('id'), col('name')])
-  # end
+  def test_select_list
+    assert_sql '"id"', slist(col('id'))
+    assert_sql '"id", "name"', slist([col('id'), col('name')])
+  end
 
-  # def test_distinct
-  #   assert_sql 'DISTINCT(`username`)', distinct(col('username'))
-  # end
+  def test_distinct
+    assert_sql 'DISTINCT("username")', distinct(col('username'))
+  end
 
-  # def test_all
-  #   assert_sql '*', all
-  # end
+  def test_all
+    assert_sql '*', all
+  end
 
   # def test_table_expression
   #   assert_sql 'FROM `users` WHERE `id` = 1 GROUP BY `name`', tblx(from(tbl('users')), where(equals(col('id'), int(1))), group_by(col('name')))

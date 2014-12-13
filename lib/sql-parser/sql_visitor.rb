@@ -322,7 +322,7 @@ module SQLParser
     end
 
     def quote(str)
-      "`#{str}`"
+      "\"#{str}\""
     end
 
     def escape(str)
