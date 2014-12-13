@@ -7,6 +7,8 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
+task :default => :test
+
 GENERATED_PARSER = 'lib/sql-parser/parser.racc.rb'
 GENERATED_LEXER = 'lib/sql-parser/parser.rex.rb'
 
